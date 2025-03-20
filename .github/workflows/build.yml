@@ -15,20 +15,16 @@ jobs:
         docker-python-version: ['3.11']
     steps:
       - uses: actions/checkout@v4
-      - name: Init submodule
+      - name: build
         run: |
           git config --global --add safe.directory ${GITHUB_WORKSPACE}
           git config --global --add safe.directory ${GITHUB_WORKSPACE}/third_party/tensorflow
           git submodule update --init --recursive
           git submodule update --remote
+          apt-get update && sudo apt-get install -y llvm-17 clang-17
           # Run configure.
           #cd ./third_party/tensorflow
-          echo -e "/usr/bin/python3\/usr/lib/python3/dist-packages\N\N\Y\/usr/lib/llvm-18/bin/clang\-Wno-sign-compare -Wno-c++20-designator -Wno-gnu-inline-cpp-without-extern\N" | ./configure
+          #echo -e "/usr/bin/python3\/usr/lib/python3/dist-packages\N\N\Y\/usr/lib/llvm-18/bin/clang\-Wno-sign-compare -Wno-c++20-designator -Wno-gnu-inline-cpp-without-extern\N" | ./configure
           #cp .tf_configure.bazelrc ${GITHUB_WORKSPACE}
-      - name: build
-        run: |
-          pwd
-          cd ${GITHUB_WORKSPACE}
-          pwd
           bazel build //tflite/java:tensorflowlitelib_stable
           find -name *.jar
