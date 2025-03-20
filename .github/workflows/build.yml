@@ -7,9 +7,9 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    container:
-      image: us-central1-docker.pkg.dev/tensorflow-sigs/tensorflow/ml-build:latest
-    timeout-minutes: 60
+    #container:
+    #  image: us-central1-docker.pkg.dev/tensorflow-sigs/tensorflow/ml-build:latest
+    #timeout-minutes: 60
     strategy:
       matrix:
         docker-python-version: ['3.11']
