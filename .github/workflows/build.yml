@@ -9,13 +9,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-        # with:
-        #   submodules: recursive
       - name: build
         run: |
-          #set -x
-          #git config --global --add safe.directory ${GITHUB_WORKSPACE}
-          #git config --global --add safe.directory ${GITHUB_WORKSPACE}/third_party/tensorflow
           git submodule update --init --recursive
           git submodule update --remote
           #sudo apt-get update
@@ -28,8 +23,7 @@ jobs:
           echo -n "${{ secrets.GPG_KEY}}" | base64 -d | gpg --import
           mkdir -p ~/.m2
           echo '<settings><servers><server><id>central</id><username>${{ secrets.MAVEN_USERNAME }}</username><password>${{ secrets.MAVEN_PASSWORD }}</password></server></servers></settings>' >~/.m2/settings.xml
-          mvn versions:set -DnewVersion=0.0.2
+          mvn -B versions:set -DnewVersion=0.0.3
           mvn -B deploy
         env:
           GPG_KEY: ${{ secrets.GPG_KEY }}
-          #MAVEN_GPG_PASSPHRASE: ""
