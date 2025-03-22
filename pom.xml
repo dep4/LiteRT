@@ -2,7 +2,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>io.github.dep4</groupId>
   <artifactId>litert</artifactId>
-  <version>${version}</version>
+  <version>0.0.1</version>
   <packaging>jar</packaging>
   <name>litert</name>
   <description>litert</description>
