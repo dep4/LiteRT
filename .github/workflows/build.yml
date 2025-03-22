@@ -25,6 +25,6 @@ jobs:
           mkdir -p ~/.m2
           echo '<settings><servers><server><id>central</id><username>${{ secrets.MAVEN_USERNAME }}</username><password>${{ secrets.MAVEN_PASSWORD }}</password></server></servers></settings>' >~/.m2/settings.xml
           mvn -B versions:set -DnewVersion=0.0.3
-          mvn -B central-publishing:0.7.0:publish
+          mvn -B deploy
         env:
           GPG_KEY: ${{ secrets.GPG_KEY }}
