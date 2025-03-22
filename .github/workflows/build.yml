@@ -19,7 +19,6 @@ jobs:
           find -name *.jar
           ls -l bazel-bin/tflite/java
           pwd
-          ls -l target
           mkdir -p target
           cp bazel-bin/tflite/java/libtensorflowlitelib_stable.jar target/litert-0.0.3.jar
       - name: publish
