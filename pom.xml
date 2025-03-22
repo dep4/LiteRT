@@ -29,16 +29,7 @@
       <version>0.7.0</version>
       <extensions>true</extensions>
       <configuration>
-       <publishingServerId>central</publishingServerId>
-       <tokenAuth>true</tokenAuth>
        <autoPublish>true</autoPublish>
-        <additionalArtifacts>
-            <additionalArtifact>
-                <file>bazel-bin/tflite/java/libtensorflowlitelib_stable.jar</file>
-                <classifier>custom</classifier>
-                <type>jar</type>
-            </additionalArtifact>
-        </additionalArtifacts>
       </configuration>
      </plugin>
      <plugin>
