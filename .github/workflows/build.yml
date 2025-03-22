@@ -33,6 +33,5 @@ jobs:
           mvn help:describe -Dcmd=package
           mvn -B install:install
           mvn -B deploy:publish
-
         env:
           GPG_KEY: ${{ secrets.GPG_KEY }}
