@@ -17,14 +17,10 @@
   <developers>
         <developer>
             <name>LiteRT developers</name>
-            <email>litert@gmail.com</email>
             <organization>LiteRT</organization>
         </developer>
   </developers>
 
-<profiles>
-  <profile>
-   <id>release</id>
    <build>
     <plugins>
      <plugin>
@@ -36,9 +32,6 @@
        <publishingServerId>central</publishingServerId>
        <tokenAuth>true</tokenAuth>
        <autoPublish>true</autoPublish>
-        <groupId>your.group.id</groupId>
-        <artifactId>your-artifact-id</artifactId>
-        <version>1.0.0</version>
         <additionalArtifacts>
             <additionalArtifact>
                 <file>bazel-bin/tflite/java/libtensorflowlitelib_stable.jar</file>
@@ -87,9 +80,7 @@
        <execution>
         <id>sign-artifacts</id>
         <phase>verify</phase>
-        <goals>
-         <goal>sign</goal>
-        </goals>
+        <goals><goal>sign</goal></goals>
        </execution>
       </executions>
       <configuration>
@@ -101,6 +92,4 @@
      </plugin>
     </plugins>
    </build>
-  </profile>
- </profiles>
 </project>
