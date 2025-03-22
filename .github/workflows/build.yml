@@ -13,13 +13,13 @@ jobs:
         #   submodules: recursive
       - name: build
         run: |
-          set -x
-          git config --global --add safe.directory ${GITHUB_WORKSPACE}
-          git config --global --add safe.directory ${GITHUB_WORKSPACE}/third_party/tensorflow
+          #set -x
+          #git config --global --add safe.directory ${GITHUB_WORKSPACE}
+          #git config --global --add safe.directory ${GITHUB_WORKSPACE}/third_party/tensorflow
           git submodule update --init --recursive
           git submodule update --remote
-          sudo apt-get update
-          sudo apt-get install -y llvm-17 clang-17
+          #sudo apt-get update
+          #sudo apt-get install -y llvm-17 clang-17
           bazel build //tflite/java:tensorflowlitelib_stable
           find -name *.jar
           ls -l bazel-bin/tflite/java
