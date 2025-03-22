@@ -49,8 +49,8 @@ jobs:
           mvn -P release --batch-mode deploy -DskipTests
         env:
           GPG_KEY: ${{ secrets.GPG_KEY }}
-          MAVEN_USERNAME: ${{ secrets.MAVEN_USERNAME }}
-          MAVEN_PASSWORD: ${{ secrets.MAVEN_PASSWORD }}
+          # MAVEN_USERNAME: ${{ secrets.MAVEN_USERNAME }}
+          # MAVEN_PASSWORD: ${{ secrets.MAVEN_PASSWORD }}
           MAVEN_GPG_PASSPHRASE: ""
       # - name: Release Maven package
       #   uses: samuelmeuli/action-maven-publish@v1
