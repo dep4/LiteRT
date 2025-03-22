@@ -2,7 +2,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>io.github.dep4</groupId>
   <artifactId>litert</artifactId>
-  <version>0.0.5</version>
+  <version>0.0.1</version>
   <packaging>jar</packaging>
   <name>litert</name>
   <description>litert</description>
@@ -108,6 +108,41 @@
          </dependency>
         </dependencies>
     </plugin>
+
+        <plugin>
+            <artifactId>maven-jar-plugin</artifactId>
+            <version>3.1.0</version>
+            <executions>
+                <execution>
+                    <id>default-jar</id>
+                    <phase>package</phase>
+                    <goals>
+                        <goal>jar</goal>
+                    </goals>
+                </execution>
+                <execution>
+                    <id>javadoc-jar</id>
+                    <phase>package</phase>
+                    <goals>
+                        <goal>jar</goal>
+                    </goals>
+                    <configuration>
+                        <classifier>javadoc</classifier>
+                    </configuration>
+                </execution>
+                <execution>
+                    <id>sources-jar</id>
+                    <phase>package</phase>
+                    <goals>
+                        <goal>jar</goal>
+                    </goals>
+                    <configuration>
+                        <classifier>sources</classifier>
+                    </configuration>
+                </execution>
+            </executions>
+        </plugin>
+
     </plugins>
    </build>
 </project>
