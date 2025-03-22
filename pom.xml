@@ -9,6 +9,11 @@
   <description>litert</description>
   <url>https://maven.apache.org</url>
 
+  <scm>
+    <url>https://github.com/your-org/your-project</url>
+</scm>
+  
+
   <licenses>
     <license>
       <name>Apache License, Version 2.0</name>
