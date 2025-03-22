@@ -20,7 +20,7 @@ jobs:
           b=bazel-bin/tflite/java/libtensorflowlite
           chmod +w $b*
           ls -l bazel-bin/tflite/java
-          zip -uj ${b}lib_stable.jar ${b}_jni_stable.so 
+          zip -0uj ${b}lib_stable.jar ${b}_jni_stable.so 
           cp ${b}lib_stable.jar target/litert-0.0.3.jar
       - name: publish
         run: |
@@ -28,7 +28,7 @@ jobs:
           mkdir -p ~/.m2
           echo '<settings><servers><server><id>central</id><username>${{ secrets.MAVEN_USERNAME }}</username><password>${{ secrets.MAVEN_PASSWORD }}</password></server></servers></settings>' >~/.m2/settings.xml
           mvn -B versions:set -DnewVersion=0.0.3
-          mvn fr.jcgay.maven.plugins:buildplan-maven-plugin:list
-          mvn -B central-publishing-maven-plugin:publish -DskipTests
+          #mvn fr.jcgay.maven.plugins:buildplan-maven-plugin:list
+          mvn -B install:install
         env:
           GPG_KEY: ${{ secrets.GPG_KEY }}
