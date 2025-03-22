@@ -17,6 +17,15 @@
     </license>
   </licenses>
 
+  
+    <developers>
+        <developer>
+            <name>LiteRT developers</name>
+            <email>litert@gmail.com</email>
+            <organization>LiteRT</organization>
+            <organizationUrl>https://github.com/litert</organizationUrl>
+        </developer>
+    </developers>
 
 <profiles>
   <profile>
