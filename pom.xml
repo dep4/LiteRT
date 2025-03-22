@@ -1,3 +1,23 @@
+<project>
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>io.github.dep4</groupId>
+  <artifactId>litert</artifactId>
+  <version>0.0.1</version>
+  <packaging>jar</packaging>
+
+  <name>litert</name>
+  <description>litert</description>
+  <url>https://maven.apache.org</url>
+
+  <licenses>
+    <license>
+      <name>Apache License, Version 2.0</name>
+      <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+      <distribution>repo</distribution>
+    </license>
+  </licenses>
+
+
 <profiles>
   <profile>
    <id>release</id>
@@ -79,3 +99,4 @@
    </build>
   </profile>
  </profiles>
+</project>
