@@ -11,6 +11,7 @@ jobs:
       - uses: actions/checkout@v4
       - name: build
         run: |
+          set -x
           git config --global --add safe.directory ${GITHUB_WORKSPACE}
           git config --global --add safe.directory ${GITHUB_WORKSPACE}/third_party/tensorflow
           git submodule update --init --recursive
