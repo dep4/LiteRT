@@ -4,33 +4,23 @@
   <artifactId>litert</artifactId>
   <version>0.0.1</version>
   <packaging>jar</packaging>
-
   <name>litert</name>
   <description>litert</description>
-  <url>https://maven.apache.org</url>
-
-  <scm>
-    <url>https://github.com/your-org/your-project</url>
-</scm>
-  
-
+  <url>https://github.com/dep4/LiteRT</url>
+  <scm><url>https://github.com/dep4/LiteRT</url></scm>
   <licenses>
     <license>
       <name>Apache License, Version 2.0</name>
       <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
-      <distribution>repo</distribution>
     </license>
   </licenses>
-
-  
-    <developers>
+  <developers>
         <developer>
             <name>LiteRT developers</name>
             <email>litert@gmail.com</email>
             <organization>LiteRT</organization>
-            <organizationUrl>https://github.com/litert</organizationUrl>
         </developer>
-    </developers>
+  </developers>
 
 <profiles>
   <profile>
