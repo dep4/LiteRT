@@ -15,13 +15,11 @@
     </license>
   </licenses>
   <developers>
-        <developer>
-            <name>LiteRT developers</name>
-            <organization>LiteRT</organization>
-        </developer>
+    <developer>
+       <name>LiteRT developers</name>
+    </developer>
   </developers>
-
-   <build>
+  <build>
     <plugins>
      <plugin>
       <groupId>org.sonatype.central</groupId>
@@ -30,37 +28,6 @@
       <extensions>true</extensions>
       <configuration>
        <autoPublish>true</autoPublish>
-      </configuration>
-     </plugin>
-     <plugin>
-      <groupId>org.apache.maven.plugins</groupId>
-      <artifactId>maven-source-plugin</artifactId>
-      <version>3.3.0</version>
-      <executions>
-       <execution>
-        <id>attach-sources</id>
-        <phase>verify</phase>
-        <goals>
-         <goal>jar-no-fork</goal>
-        </goals>
-       </execution>
-      </executions>
-     </plugin>
-     <plugin>
-      <groupId>org.apache.maven.plugins</groupId>
-      <artifactId>maven-javadoc-plugin</artifactId>
-      <version>3.6.3</version>
-      <executions>
-       <execution>
-        <id>attach-javadoc</id>
-        <goals>
-         <goal>jar</goal>
-        </goals>
-       </execution>
-      </executions>
-      <configuration>
-       <stylesheet>java</stylesheet>
-       <doclint>none</doclint>
       </configuration>
      </plugin>
      <plugin>
@@ -108,7 +75,6 @@
          </dependency>
         </dependencies>
     </plugin>
-
         <plugin>
             <artifactId>maven-jar-plugin</artifactId>
             <version>3.1.0</version>
@@ -116,16 +82,12 @@
                 <execution>
                     <id>default-jar</id>
                     <phase>package</phase>
-                    <goals>
-                        <goal>jar</goal>
-                    </goals>
+                    <goals><goal>jar</goal></goals>
                 </execution>
                 <execution>
                     <id>javadoc-jar</id>
                     <phase>package</phase>
-                    <goals>
-                        <goal>jar</goal>
-                    </goals>
+                    <goals><goal>jar</goal></goals>
                     <configuration>
                         <classifier>javadoc</classifier>
                     </configuration>
@@ -133,16 +95,13 @@
                 <execution>
                     <id>sources-jar</id>
                     <phase>package</phase>
-                    <goals>
-                        <goal>jar</goal>
-                    </goals>
+                    <goals><goal>jar</goal></goals>
                     <configuration>
                         <classifier>sources</classifier>
                     </configuration>
                 </execution>
             </executions>
         </plugin>
-
     </plugins>
    </build>
 </project>
