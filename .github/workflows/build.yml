@@ -14,6 +14,8 @@ jobs:
           git submodule update --remote
           bazel build //tflite/java:tensorflowlitelib_stable
           chmod +w bazel-bin/tflite/java/libtensorflowlite*
+          add-apt-repository universe
+          apt-get install execstack
           execstack -c bazel-bin/tflite/java/libtensorflowlite_jni_stable.so
           zip -0uj bazel-bin/tflite/java/libtensorflowlitelib_stable.jar bazel-bin/tflite/java/libtensorflowlite_jni_stable.so
       - name: publish
