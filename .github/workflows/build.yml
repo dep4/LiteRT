@@ -12,9 +12,9 @@ jobs:
         run: |
           git submodule update --init --recursive
           git submodule update --remote
-          bazel build //tflite/java:tensorflowlitelib_stable
+          bazel build //tflite/java:tensorflowlitelib
           chmod +w bazel-bin/tflite/java/libtensorflowlite*
-          zip -0uj bazel-bin/tflite/java/libtensorflowlitelib_stable.jar bazel-bin/tflite/java/libtensorflowlite_jni_stable.so 
+          zip -0uj bazel-bin/tflite/java/libtensorflowlitelib.jar bazel-bin/tflite/java/libtensorflowlite_jni.so 
       - name: publish
         run: |
           echo -n "${{secrets.GPG_KEY}}" | base64 -d | gpg --import
