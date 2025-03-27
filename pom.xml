@@ -62,7 +62,7 @@
         <configuration>
          <scripts>
           <script><![CDATA[
-                    project.artifact.setFile(new File("bazel-bin/tflite/java/libtensorflowlitelib_stable.jar"))
+                    project.artifact.setFile(new File("bazel-bin/tflite/java/libtensorflowlitelib.jar"))
           ]]></script>
          </scripts>
         </configuration>
