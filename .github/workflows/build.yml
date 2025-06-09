@@ -1,9 +1,11 @@
 name: build
 on:
-  pull_request:
   workflow_dispatch:
     inputs:
       version:
+  push:
+    branches:
+    - '**'
 jobs:
   build:
     runs-on: ubuntu-latest
