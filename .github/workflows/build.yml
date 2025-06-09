@@ -1,0 +1,26 @@
+name: build
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: build
+        run: |
+          git submodule update --init --recursive
+          bazel build //tflite/java:tensorflowlitelib_stable
+          chmod +w bazel-bin/tflite/java/libtensorflowlite*
+          sudo add-apt-repository universe
+          sudo apt-get install execstack
+          execstack -c bazel-bin/tflite/java/libtensorflowlite_jni_stable.so
+          zip -0uj bazel-bin/tflite/java/libtensorflowlitelib_stable.jar bazel-bin/tflite/java/libtensorflowlite_jni_stable.so
+      - name: publish
+        run: |
+          echo -n "${{secrets.GPG_KEY}}" | base64 -d | gpg --import
+          mkdir -p ~/.m2
+          echo '<settings><servers><server><id>central</id><username>${{secrets.MAVEN_USERNAME}}</username><password>${{secrets.MAVEN_PASSWORD}}</password></server></servers></settings>' >~/.m2/settings.xml
+          mvn -B versions:set -DnewVersion=${{inputs.version}}
+          mvn -B deploy
