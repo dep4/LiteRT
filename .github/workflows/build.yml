@@ -1,0 +1,24 @@
+name: build
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v7
+      with:
+        submodules: true
+    - name: build
+      run: |
+        bazel build //tflite/java:tensorflowlitelib_stable --define tflite_with_xnnpack=false --linkopt=-Wl,-z,noexecstack
+        chmod +w bazel-bin/tflite/java/*.jar
+        zip -0uj bazel-bin/tflite/java/*_stable.jar bazel-bin/tflite/java/*.so
+    - name: publish
+      run: |
+        echo -n "${{secrets.GPG_KEY}}" | base64 -d | gpg --import
+        mkdir -p ~/.m2
+        echo '<settings><servers><server><id>central</id><username>${{secrets.MAVEN_USERNAME}}</username><password>${{secrets.MAVEN_PASSWORD}}</password></server></servers></settings>' >~/.m2/settings.xml
+        mvn -B versions:set -DnewVersion=${{inputs.version}}
+        mvn -B deploy
