@@ -7,17 +7,11 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v7
     - name: build
       run: |
         git submodule update --init --recursive
-        bazel build //tflite/java:tensorflowlitelib_stable --linkopt=-Wl,-z,noexecstack
+        bazel build //tflite/java:tensorflowlitelib_stable --define=tflite_with_xnnpack=false --define=tflite_with_nnapi=false --linkopt=-Wl,-z,noexecstack
         chmod +w bazel-bin/tflite/java/*.jar
         zip -0uj bazel-bin/tflite/java/*_stable.jar bazel-bin/tflite/java/*.so
-    - name: publish
-      run: |
-        echo -n "${{secrets.GPG_KEY}}" | base64 -d | gpg --import
-        mkdir -p ~/.m2
-        echo '<settings><servers><server><id>central</id><username>${{secrets.MAVEN_USERNAME}}</username><password>${{secrets.MAVEN_PASSWORD}}</password></server></servers></settings>' >~/.m2/settings.xml
-        mvn -B versions:set -DnewVersion=${{inputs.version}}
-        mvn -B deploy
+        ls -l bazel-bin/tflite/java/*.so
