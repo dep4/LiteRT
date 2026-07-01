@@ -11,7 +11,7 @@ jobs:
     - name: build
       run: |
         git submodule update --init --recursive
-        bazel build //tflite/java:tensorflowlitelib_stable --define=tflite_with_xnnpack=false --define=tflite_with_nnapi=false --linkopt=-Wl,-z,noexecstack
+        bazel build -c opt //tflite/java:tensorflowlitelib_stable --linkopt=-Wl,-z,noexecstack
         chmod +w bazel-bin/tflite/java/*.jar
         zip -0uj bazel-bin/tflite/java/*_stable.jar bazel-bin/tflite/java/*.so
         ls -l bazel-bin/tflite/java/*.so
