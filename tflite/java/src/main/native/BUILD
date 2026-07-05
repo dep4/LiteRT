@@ -104,8 +104,6 @@ cc_library_with_tflite(
         "//tflite/c/jni:jni_utils",
         "//tflite/c:c_api_without_op_resolver",
         "//tflite/c:common",
-        "//tflite/acceleration/configuration/c:delegate_plugin",
-        "//tflite/acceleration/configuration/c:xnnpack_plugin",
         "//tflite/tools:verifier_internal",
     ],
     deps = [
